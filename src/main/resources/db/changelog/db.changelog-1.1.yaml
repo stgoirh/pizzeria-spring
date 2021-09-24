@@ -1,0 +1,25 @@
+databaseChangeLog:
+  - changeSet:
+      id: loadData-pax
+      author: jleivasi@everis.com
+      changes:
+        - tagDatabase:
+            tag: v1.1
+        - loadData:
+            encoding: UTF-8
+            file: db/data/pax.csv
+            quotchar: "'"
+            separator: ","
+            tableName: pax
+  - changeSet:
+      id: loadData-travel
+      author: jleivasi@everis.com
+      changes:
+        - tagDatabase:
+            tag: v1.1
+        - loadData:
+            encoding: UTF-8
+            file: db/data/travel.csv
+            quotchar: "'"
+            separator: ","
+            tableName: travel
