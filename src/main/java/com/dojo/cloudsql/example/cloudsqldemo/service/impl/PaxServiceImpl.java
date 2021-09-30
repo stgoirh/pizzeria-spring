@@ -14,7 +14,7 @@ import com.dojo.cloudsql.example.cloudsqldemo.service.repository.TravelRepositor
 
 import reactor.core.publisher.Mono;
 
-@Service
+//@Service
 public class PaxServiceImpl implements PaxService {
 
 	private final PaxRepository paxRepository;

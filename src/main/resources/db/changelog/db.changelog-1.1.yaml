@@ -1,25 +1,53 @@
 databaseChangeLog:
   - changeSet:
-      id: loadData-pax
-      author: jleivasi@everis.com
+      id: loadData-orden
+      author: sreinoso@everis.com
+      labels: labelOne
       changes:
         - tagDatabase:
-            tag: v1.1
+            tag: v1.2
         - loadData:
             encoding: UTF-8
-            file: db/data/pax.csv
+            file: db/data/orden.csv
             quotchar: "'"
             separator: ","
-            tableName: pax
+            tableName: orden
   - changeSet:
-      id: loadData-travel
-      author: jleivasi@everis.com
+      id: loadData-pizza
+      author: sreinoso@everis.com
+      labels: labelOne
       changes:
         - tagDatabase:
-            tag: v1.1
+            tag: v1.2
         - loadData:
             encoding: UTF-8
-            file: db/data/travel.csv
+            file: db/data/pizza.csv
             quotchar: "'"
             separator: ","
-            tableName: travel
+            tableName: pizza
+  - changeSet:
+      id: loadData-ingrediente
+      author: sreinoso@everis.com
+      labels: labelOne
+      changes:
+        - tagDatabase:
+            tag: v1.2
+        - loadData:
+            encoding: UTF-8
+            file: db/data/ingrediente.csv
+            quotchar: "'"
+            separator: ","
+            tableName: ingrediente
+  - changeSet:
+      id: loadData-pizza-ingrediente
+      author: sreinoso@everis.com
+      labels: labelOne
+      changes:
+        - tagDatabase:
+            tag: v1.2
+        - loadData:
+            encoding: UTF-8
+            file: db/data/pizza_ingrediente.csv
+            quotchar: "'"
+            separator: ","
+            tableName: pizza_ingrediente

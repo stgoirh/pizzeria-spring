@@ -7,12 +7,12 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import com.dojo.cloudsql.example.cloudsqldemo.domain.Pax;
-import com.dojo.cloudsql.example.cloudsqldemo.domain.Travel;
+import com.dojo.cloudsql.example.cloudsqldemo.domain.Pizza;
+import com.dojo.cloudsql.example.cloudsqldemo.domain.Orden;
 
-public interface TravelRepository extends JpaRepository<Travel, String> {
-	@Transactional
+public interface PizzaRepository extends JpaRepository<Pizza, Integer> {
+    @Transactional
 	@Modifying
-	@Query("DELETE FROM Travel WHERE pax = :pax")
-	void deleteByPax(@Param("pax") Pax pax);
+	@Query("DELETE FROM Pizza WHERE orden = :orden")
+	void deleteByOrden(@Param("orden") Orden orden);
 }
