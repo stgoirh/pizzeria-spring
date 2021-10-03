@@ -16,6 +16,8 @@ import com.dojo.cloudsql.example.cloudsqldemo.service.repository.OrdenRepository
 import com.dojo.cloudsql.example.cloudsqldemo.service.repository.PizzaRepository;
 import com.dojo.cloudsql.example.cloudsqldemo.service.repository.IngredienteRepository;
 
+import com.dojo.cloudsql.example.cloudsqldemo.publisher.PubSubPublisher;
+
 import reactor.core.publisher.Mono;
 @Service
 @Repository
@@ -23,6 +25,8 @@ public class OrdenServiceImpl implements OrdenService{
     private final OrdenRepository ordenRepository;
     private final PizzaRepository pizzaRepository;
     private final IngredienteRepository ingredienteRepository;
+
+    private PubSubPublisher psp = new PubSubPublisher();
 
     @Autowired
     public OrdenServiceImpl(OrdenRepository ordenRepository, PizzaRepository pizzaRepository, IngredienteRepository ingredienteRepository){
@@ -52,7 +56,7 @@ public class OrdenServiceImpl implements OrdenService{
             pizzaRepository.save(pizza);
         }
         //agregar ingredientes?
- 
+        psp.publicarMensaje("se ha guardado la orden: " + ordenNueva.getId());
         return Mono.just(ordenNueva);
     }
 
@@ -65,6 +69,7 @@ public class OrdenServiceImpl implements OrdenService{
                 pizza.setOrden(orden);
                 pizzaRepository.save(pizza);
             }
+            psp.publicarMensaje("se ha actualizado la orden: " + orden.getId());
             return Mono.just(ordenRepository.save(orden));
         }else{
             return Mono.just(ordenDB.get());
@@ -81,6 +86,7 @@ public class OrdenServiceImpl implements OrdenService{
             pizzaRepository.deleteByOrden(temp);
             ordenRepository.delete(temp);
         }
+        psp.publicarMensaje("se ha actualizado la orden: " + id);
         return Mono.just(ordenRepository.findById(id));
     }
 }

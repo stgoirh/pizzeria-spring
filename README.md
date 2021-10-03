@@ -24,6 +24,8 @@ Recuerda usar java 8 o mayor y ejecutar los siguientes comandos:
 ```
 
 Finalmente ejecuta el siguiente comando en la consola de su sistema operativo para ejecutar la aplicación:
+## consola postgres desde docker
+docker exec -it postgres psql -U postgres
 
 ```
 export IP_CLOUDSQL={la ip de cloud sql}                             
